@@ -1,0 +1,29 @@
+Age
+RoomService
+FoodCourt
+ShoppingMall
+Spa
+VRDeck
+CabNum
+HomePlanet_Earth
+HomePlanet_Europa
+HomePlanet_Mars
+CryoSleep_False
+CryoSleep_True
+Destination_55 Cancri e
+Destination_PSO J318.5-22
+Destination_TRAPPIST-1e
+VIP_False
+VIP_True
+Deck_A
+Deck_B
+Deck_C
+Deck_D
+Deck_E
+Deck_F
+Deck_G
+Deck_T
+Deck_nan
+Side_P
+Side_S
+Side_None
