@@ -1,0 +1,136 @@
+nohup: ignoring input
+================================================================================
+PROJETO 2: REGRESSÃO - PREDIÇÃO DE VALORES DE ESTACIONAMENTO
+================================================================================
+
+================================================================================
+1. CARREGAMENTO DO DATASET
+================================================================================
+
+Carregando dados de: /home/ian/RedesNeurais/redes_neurais_ianfaray/docs/projeto/lots.transactions.csv
+
+Dimensões do dataset: 834,327 linhas × 8 colunas
+
+Colunas: ['_id', 'parking_id', 'checkin_date', 'checkout_date', 'payment_date', 'paid_amount', 'duration', 'use_type']
+
+--------------------------------------------------------------------------------
+EXPLORAÇÃO INICIAL
+--------------------------------------------------------------------------------
+
+📊 Primeiras 5 linhas:
+                        _id  parking_id  ... duration  use_type
+0  6611b0cb6d782a2cece01b00         653  ...        3  Rotativo
+1  6611b0f66d782a2cece01b01         653  ...        1  Rotativo
+2  6611b0f96d782a2cece01b02         653  ...        2  Rotativo
+3  6611b0fd6d782a2cece01b03         653  ...        3  Rotativo
+4  6611b1036d782a2cece01b04         653  ...        4  Rotativo
+
+[5 rows x 8 columns]
+
+📋 Informações do dataset:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 834327 entries, 0 to 834326
+Data columns (total 8 columns):
+ #   Column         Non-Null Count   Dtype  
+---  ------         --------------   -----  
+ 0   _id            834327 non-null  object 
+ 1   parking_id     834327 non-null  int64  
+ 2   checkin_date   834327 non-null  object 
+ 3   checkout_date  834327 non-null  object 
+ 4   payment_date   815562 non-null  object 
+ 5   paid_amount    834327 non-null  float64
+ 6   duration       834327 non-null  int64  
+ 7   use_type       834327 non-null  object 
+dtypes: float64(1), int64(2), object(5)
+memory usage: 50.9+ MB
+None
+
+📈 Estatísticas descritivas:
+          parking_id    paid_amount      duration
+count  834327.000000  834327.000000  8.343270e+05
+mean      707.490961      12.750958 -1.653644e+03
+std        25.195044      10.192716  1.715022e+05
+min       653.000000       0.000000 -1.773836e+07
+25%       700.000000       5.000000  1.000000e+00
+50%       700.000000      10.000000  2.000000e+00
+75%       700.000000      15.000000  2.000000e+00
+max       765.000000     480.000000  2.057000e+03
+
+🔍 Valores ausentes:
+payment_date    18765
+dtype: int64
+
+📊 Tipos de uso:
+use_type
+Rotativo    792959
+Isento       41368
+Name: count, dtype: int64
+
+================================================================================
+2. ENGENHARIA DE CARACTERÍSTICAS
+================================================================================
+
+✅ Características temporais extraídas:
+- checkin_hour, checkin_day_of_week, checkin_month, checkin_year
+- checkout_hour, is_weekend, periodo_checkin
+
+================================================================================
+3. LIMPEZA DE DADOS
+================================================================================
+
+Tamanho original: 834,249 registros
+
+⚡ Amostragem estratificada aplicada: 199,993 registros
+Tamanho após limpeza: 199,993 registros
+Registros removidos: 634,334
+
+================================================================================
+4. PREPARAÇÃO DE CARACTERÍSTICAS
+================================================================================
+
+✅ Características selecionadas: 20
+['parking_id', 'duration', 'use_type_encoded', 'checkin_hour', 'checkin_day_of_week', 'checkin_day_of_month', 'checkin_month', 'checkin_year', 'checkout_hour', 'is_weekend', 'periodo_checkin', 'duration_x_hour', 'duration_squared', 'duration_cubed', 'is_peak_hour', 'duration_x_parking', 'hour_x_weekend', 'duration_x_weekend', 'duration_x_use_type', 'hour_squared']
+
+Shape de X: (199993, 20)
+Shape de y: (199993,)
+
+✅ Gráficos de exploração salvos
+
+================================================================================
+DIVISÃO DOS DADOS
+================================================================================
+
+Conjunto de Treinamento: 140,075 amostras (70.0%)
+Conjunto de Validação:   29,919 amostras (15.0%)
+Conjunto de Teste:       29,999 amostras (15.0%)
+
+✅ Dados normalizados (StandardScaler)
+
+================================================================================
+5. TREINAMENTO DO MODELO
+================================================================================
+
+Arquitetura do MLP:
+Entrada: 20 neurônios
+Camada Oculta 1: 512 neurônios (ReLU)
+Camada Oculta 2: 256 neurônios (ReLU)
+Camada Oculta 3: 128 neurônios (ReLU)
+Camada Oculta 4: 64 neurônios (ReLU)
+Saída: 1 neurônio (Linear)
+
+Total de parâmetros: 182,336
+
+Hiperparâmetros:
+- Learning rate: 0.001
+- Épocas: 200
+- Batch size: 512
+- Patience: 25
+
+Época |   Train Loss |     Val Loss |   Train MAPE |     Val MAPE
+--------------------------------------------------------------------------------
+    1 |       8.0571 |       8.2138 |       18.43% |       18.68%
+    5 |       5.7042 |       5.9868 |       13.28% |       13.54%
+   10 |       5.0894 |       5.4801 |       11.39% |       11.74%
+   15 |       5.4297 |       5.8638 |       12.74% |       13.10%
+   20 |       4.7945 |       5.2234 |       11.51% |       11.88%
+   25 |       4.7682 |       5.2934 |       11.02% |       11.44%

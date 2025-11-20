@@ -1,0 +1,36 @@
+================================================================================
+PROJETO 2: PREDIÇÃO DE VALORES DE ESTACIONAMENTO - RESUMO
+================================================================================
+
+Dataset: LOTS Parking Transactions
+Tamanho do dataset: 49,993 amostras após limpeza
+Características: 21
+
+Arquitetura do MLP:
+  Entrada: 21 → Oculta1: 128 → Oculta2: 64 → Oculta3: 32 → Saída: 1
+
+MÉTRICAS DE PERFORMANCE:
+
+Treinamento:
+  MAE:  R$ 1.30
+  RMSE: R$ 2.15
+  R²:   0.9180
+  MAPE: 10.95%
+
+Validação:
+  MAE:  R$ 1.38
+  RMSE: R$ 2.32
+  R²:   0.9070
+  MAPE: 11.26%
+
+Teste:
+  MAE:  R$ 1.40
+  RMSE: R$ 2.42
+  R²:   0.8952
+  MAPE: 11.63%
+
+
+Taxa de acerto (Teste):
+  Erro ≤ R$ 1,00: 60.22%
+  Erro ≤ R$ 2,00: 78.21%
+  Erro ≤ R$ 5,00: 95.32%

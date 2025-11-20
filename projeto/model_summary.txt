@@ -1,8 +1,0 @@
-Classificação de Posições de Jogadores EA FC 26 - Resumo do Modelo
-============================================================
-
-Dataset: 13,265 jogadores, 40 características
-Classes: ['CAM', 'CB', 'CDM', 'CM', 'LB', 'LM', 'RB', 'RM', 'ST']
-Arquitetura: [40, 128, 64, 32, 9]
-Acurácia no Teste: 0.7064
-F1-Score no Teste: 0.6999
