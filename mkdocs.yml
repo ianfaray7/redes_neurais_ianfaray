@@ -139,4 +139,6 @@ nav:
     - Roteiro 2: ./roteiro2/main.md
     - Roteiro 3: ./roteiro3/main.md
     - Roteiro 4: ./roteiro4/main.md
-  - Projeto: ./projeto/main.md
+  - Projetos:
+    - Projeto 1 - Classificação: ./projeto1/main.md
+    - Projeto 2 - Regressão: ./projeto2/main.md
